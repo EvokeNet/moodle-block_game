@@ -54,7 +54,7 @@
 
 .block_game .userinfo .username {
     font-size: 28px;
-    font-family: "Bungee",cursive;
+    font-family: "Bungee", cursive;
     margin-right: 100px;
 }
 
@@ -63,4 +63,13 @@
     position: absolute;
     right: 0;
     top: -12px;
+}
+
+#page-blocks-game-rank_game .table {
+    font-family: "Bungee", cursive;
+}
+
+#page-blocks-game-rank_game .table .thead-dark th {
+    background-color: #ff0540;
+    border-color: #f62657;
 }

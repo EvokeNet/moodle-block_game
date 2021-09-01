@@ -67,9 +67,15 @@ if ($ok) {
     } else {
         $game->config = block_game_get_config_block($courseid);
     }
+
+    $outputhtml = '<div class="navigationbuttons mb-4">';
+    $outputhtml .= '<a class="btn btn-primary" href="'. $CFG->wwwroot .'/course/view.php?id='.$courseid.'">Back to mission</a>';
+    $outputhtml .= '<a class="btn btn-primary ml-3" href="'. $CFG->wwwroot .'/blocks/game/perfil_gamer.php?id='.$courseid.'">Back to personal score</a>';
+    $outputhtml .= '</div>';
+
     $limit = 0;
     if (isset($game->config->show_rank) && $game->config->show_rank == 1) {
-        $outputhtml = '<div class="rank">';
+        $outputhtml .= '<div class="rank">';
         if ($courseid != SITEID) {
             $limit = $game->config->limit_rank;
             $txtlimit = "";
@@ -77,41 +83,44 @@ if ($ok) {
                 $txtlimit = "<strong>Top " . $limit . "</strong>";
             }
             $txtlimit .= groups_print_course_menu($course, '/blocks/game/rank_game.php?id=' . $courseid);
-            $outputhtml .= '<h3>( ' . $course->fullname . ' ) ' . $txtlimit . '</h3><br/>';
-        } else {
-            $outputhtml .= '<h3>( ' . get_string('general', 'block_game') . ' )</h3><br/>';
         }
-        $outputhtml .= '<table class="generaltable" width="100%">';
+        $outputhtml .= '<table class="table table-bordered">';
         // View details.
         $context = context_course::instance($COURSE->id, MUST_EXIST);
         $header = '';
         $showreader = false;
         if (has_capability('moodle/course:update', $context, $USER->id)) {
-            $header .= '<tr class="">';
-            $header .= '<td width="9%" align="center" class="cell c0 " style=""><strong>'
-                    . get_string('order', 'block_game') . '</strong></td>';
-            $header .= '<td width="42%" class="cell c1 " style=""><strong>'
-                    . get_string('name', 'block_game') . '</strong></td>';
-            $header .= '<td width="15%" align="center" class="cell c2 " style=""><strong>'
-                    . get_string('score_atv', 'block_game') . '</strong></td>';
-            $header .= '<td width="15%" align="center" class="cell c3 " style=""><strong>'
-                    . get_string('score_mod', 'block_game') . '</strong></td>';
-            $header .= '<td width="10%" align="center" class="cell c4 " style=""><strong>'
-                    . get_string('score_section', 'block_game') . '</strong></td>';
-            $header .= '<td width="15%" align="center" class="cell c5 " style=""><strong>'
-                    . get_string('score_bonus_day', 'block_game') . '</strong></td>';
-            $header .= '<td width="9%" align="center" class="cell c6 lastcol" style=""><strong>'
-                    . get_string('score_total', 'block_game') . '</strong></td>';
+            $header .= '<thead class="thead-dark">';
+            $header .= '<tr>';
+            $header .= '<th style="width: 9%;" scope="col"><strong>'
+                    . get_string('order', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 42%;" scope="col"><strong>'
+                    . get_string('name', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 15%;" scope="col"><strong>'
+                    . get_string('score_atv', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 15%;" scope="col"><strong>'
+                    . get_string('score_mod', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 10%;" scope="col"><strong>'
+                    . get_string('score_section', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 15%;" scope="col"><strong>'
+                    . get_string('score_bonus_day', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 9%;" scope="col"><strong>'
+                    . get_string('score_total', 'block_game') . '</strong></th>';
+            $header .= '</thead>';
             $header .= '</tr>';
             $showreader = true;
         } else {
-            $header .= '<tr class="">';
-            $header .= '<td width="10%" align="center" class="cell c0 " style=""><strong>'
-                    . get_string('order', 'block_game') . '</strong></td>';
-            $header .= '<td width="80%" class="cell c1 " style=""><strong>'
-                    . get_string('name', 'block_game') . '</strong></td>';
-            $header .= '<td width="10%" align="center" class="cell c2 lastcol" style=""><strong>'
-                    . get_string('score_total', 'block_game') . '</strong></td>';
+            $header .= '<thead class="thead-dark">';
+            $header .= '<tr>';
+            $header .= '<th style="width: 10%;" scope="col"><strong>'
+                    . get_string('order', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 40%;" scope="col"><strong>'
+                    . get_string('name', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 40%;" scope="col"><strong>'
+                . get_string('collectedsuperpowers', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 10%;" scope="col"><strong>'
+                    . get_string('evocoins', 'block_game') . '</strong></th>';
+            $header .= '</thead>';
             $header .= '</tr>';
         }
         $outputhtml .= $header;
@@ -130,29 +139,30 @@ if ($ok) {
                 }
                 $avatartxt .= $img . '" title="avatar"/>';
             }
-            $ordtxt = $ord . '&ordm;';
+            $ordtxt = $ord;
             $usertxt = $avatartxt . ' ******** ';
             if ($game->config->show_identity == 0) {
                 $usertxt = $avatartxt . ' ' . $gamer->firstname . ' ' . $gamer->lastname;
             }
-            $scoretxt = $gamer->pt . get_string('abbreviate_score', 'block_game');
+            $scoretxt = $gamer->pt;
             if ($gamer->userid == $USER->id) {
                 $usertxt = $avatartxt . ' <strong>' . $gamer->firstname . ' ' . $gamer->lastname . '</trong>';
-                $scoretxt = '<strong>' . $gamer->pt . get_string('abbreviate_score', 'block_game') . '</trong>';
-                $ordtxt = '<strong>' . $ord . '&ordm;</trong>';
+                $scoretxt = '<strong>' . $gamer->pt . '</trong>';
+                $ordtxt = '<strong>' . $ord . '</strong>';
             }
-            $outputhtml .= '<tr class="">';
-            $outputhtml .= '<td align="center" class="cell c0" style="">' . $ordtxt . '</td>';
-            $outputhtml .= '<td class="cell c2" style=""> ' . $usertxt . ' </td>';
+            $outputhtml .= '<tr>';
+            $outputhtml .= '<td align="center" class="cell c0">' . $ordtxt . '</td>';
+            $outputhtml .= '<td class="cell c2"> ' . $usertxt . ' </td>';
+            $outputhtml .= '<td class="cell c3"> Badges goes here </td>';
             $colltd = 'c3 lastcol';
             if ($showreader) {
-                $outputhtml .= '<td align="center" class="cell c3 small" style="">' . $gamer->sum_score_activities . '</td>';
-                $outputhtml .= '<td align="center" class="cell c4 small" style="">' . $gamer->sum_score_module_completed . '</td>';
-                $outputhtml .= '<td align="center" class="cell c5 small" style="">' . $gamer->sum_score_section . '</td>';
-                $outputhtml .= '<td align="center" class="cell c6 small" style="">' . $gamer->sum_score_bonus_day . '</td>';
+                $outputhtml .= '<td align="center" class="cell c3 small">' . $gamer->sum_score_activities . '</td>';
+                $outputhtml .= '<td align="center" class="cell c4 small">' . $gamer->sum_score_module_completed . '</td>';
+                $outputhtml .= '<td align="center" class="cell c5 small">' . $gamer->sum_score_section . '</td>';
+                $outputhtml .= '<td align="center" class="cell c6 small">' . $gamer->sum_score_bonus_day . '</td>';
                 $colltd = 'c7 lastcol';
             }
-            $outputhtml .= '<td align="center" class="cell ' . $colltd . ' small" style="">' . $scoretxt . '</td>';
+            $outputhtml .= '<td align="center" class="cell ' . $colltd . ' small">' . $scoretxt . '</td>';
             $outputhtml .= '</tr>';
 
             if ($limit > 0 && $limit == $ord) {

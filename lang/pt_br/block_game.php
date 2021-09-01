@@ -212,3 +212,6 @@ $string['imagemlevels'] = "Substituir imagens de Níveis";
 $string['imagemlevelsdesc'] = "<h5 style='color:red'>Importante: (apenas arquivos SVG)</h5> Os arquivos de nível devem seguir a seguinte nomenclatura <b><span style='font-family: Courier'>lv0.svg, lv1.svg, lv2.svg, lv3.svg... até lv12.svg</span></b>. Não há necessidade de substituir todos os níveis, é possível substituir apenas o <b><span style='font-family: Courier'>lv5.svg</span></b> por exemplo, basta fazer upload apenas dos arquivos desejados seguindo a nomenclatura.";
 
 $string['downloadthis'] = 'Salvar como';
+
+$string['evocoins'] = 'Evocoins';
+$string['collectedsuperpowers'] = 'Super poderes coletados';
