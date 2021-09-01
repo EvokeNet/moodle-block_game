@@ -1,0 +1,66 @@
+.block_game .awards {
+    background-color: #fff;
+    border-radius: 40px;
+    border: 1px solid #c3c3c3;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+.block_game .awards .score {
+    border-radius: 30px;
+    display: inline-block;
+    padding: 6px 20px 8px 8px;
+    background: linear-gradient(90deg, rgba(51, 41, 255, 1) 0%, rgba(51, 41, 255, 1) 22%,  rgba(0, 240, 166, 1) 100%);
+}
+
+.block_game .awards .score .icon,
+.block_game .awards .score .points {
+    display: inline-block;
+}
+
+.block_game .awards .score .icon {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+.block_game .awards .score .points {
+    color: #fff;
+    font-size: 28px;
+    font-family: "Bungee", cursive;
+}
+
+.block_game .awards .badges {
+    display: inline-block;
+    border-radius: 40px;
+    border: 1px solid rgba(0, 240, 166, 1);
+    padding: 12px;
+    margin-left: 20px;
+}
+
+.block_game .userinfo {
+    background-color: #fff;
+    border-radius: 40px;
+    border: 1px solid #c3c3c3;
+    padding: 17px 15px 17px 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.block_game .userinfo .username,
+.block_game .userinfo .userpicture {
+    display: inline-block;
+}
+
+.block_game .userinfo .username {
+    font-size: 28px;
+    font-family: "Bungee",cursive;
+    margin-right: 100px;
+}
+
+.block_game .userinfo .userpicture .img-fluid {
+    width: 100px;
+    position: absolute;
+    right: 0;
+    top: -12px;
+}
