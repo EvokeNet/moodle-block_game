@@ -1,3 +1,7 @@
+.block_game .card-title {
+    display: none !important;
+}
+
 .block_game .awards {
     background-color: #fff;
     border-radius: 40px;

@@ -96,6 +96,8 @@ if ($ok) {
                     . get_string('order', 'block_game') . '</strong></th>';
             $header .= '<th style="width: 42%;" scope="col"><strong>'
                     . get_string('name', 'block_game') . '</strong></th>';
+            $header .= '<th style="width: 40%;" scope="col"><strong>'
+                . get_string('collectedsuperpowers', 'block_game') . '</strong></th>';
             $header .= '<th style="width: 15%;" scope="col"><strong>'
                     . get_string('score_atv', 'block_game') . '</strong></th>';
             $header .= '<th style="width: 15%;" scope="col"><strong>'
