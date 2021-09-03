@@ -1283,6 +1283,7 @@ function block_game_get_course_badges_with_user_award($userid, $courseid) {
         $badges[] = [
             'id' => $coursebadge->id,
             'name' => $coursebadge->name,
+            'description' => $coursebadge->description,
             'badgeimage' => block_game_get_badge_image_url($PAGE->context->id, $coursebadge->id),
             'awarded' => false
         ];

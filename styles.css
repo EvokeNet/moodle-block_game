@@ -2,6 +2,7 @@
     display: none !important;
 }
 
+#page-blocks-game-perfil_gamer .awards,
 .block_game .awards {
     background-color: #fff;
     border-radius: 40px;
@@ -10,6 +11,7 @@
     display: inline-block;
 }
 
+#page-blocks-game-perfil_gamer .awards .score,
 .block_game .awards .score {
     border-radius: 30px;
     display: inline-block;
@@ -17,21 +19,26 @@
     background: linear-gradient(90deg, rgba(51, 41, 255, 1) 0%, rgba(51, 41, 255, 1) 22%,  rgba(0, 240, 166, 1) 100%);
 }
 
+#page-blocks-game-perfil_gamer .awards .score .icon,
+#page-blocks-game-perfil_gamer .awards .score .points,
 .block_game .awards .score .icon,
 .block_game .awards .score .points {
     display: inline-block;
 }
 
+#page-blocks-game-perfil_gamer .awards .score .icon,
 .block_game .awards .score .icon {
     background-color: #fff;
     padding: 12px;
     border-radius: 20px;
 }
 
+#page-blocks-game-perfil_gamer .awards .score .icon .evocoin,
 .block_game .awards .score .icon .evocoin {
     margin-top: -8px;
 }
 
+#page-blocks-game-perfil_gamer .awards .score .points,
 .block_game .awards .score .points {
     color: #fff;
     font-size: 28px;
@@ -60,6 +67,7 @@
     filter: grayscale(100%) opacity(30%);
 }
 
+#page-blocks-game-perfil_gamer .userinfo,
 .block_game .userinfo {
     background-color: #fff;
     border-radius: 40px;
@@ -69,17 +77,21 @@
     display: inline-block;
 }
 
+#page-blocks-game-perfil_gamer .userinfo .username,
+#page-blocks-game-perfil_gamer .userinfo .userpicture,
 .block_game .userinfo .username,
 .block_game .userinfo .userpicture {
     display: inline-block;
 }
 
+#page-blocks-game-perfil_gamer .userinfo .username,
 .block_game .userinfo .username {
     font-size: 28px;
     font-family: "Bungee", cursive;
     margin-right: 100px;
 }
 
+#page-blocks-game-perfil_gamer .userinfo .userpicture .img-fluid,
 .block_game .userinfo .userpicture .img-fluid {
     width: 100px;
     position: absolute;
@@ -94,4 +106,62 @@
 #page-blocks-game-rank_game .table .thead-dark th {
     background-color: #ff0540;
     border-color: #f62657;
+}
+
+#page-blocks-game-perfil_gamer .awards {
+    background-color: #fff;
+    border-radius: 40px;
+    border: 1px solid #c3c3c3;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+#page-blocks-game-perfil_gamer .awards .score {
+    border-radius: 30px;
+    display: inline-block;
+    padding: 6px 20px 8px 8px;
+    background: linear-gradient(90deg, rgba(51, 41, 255, 1) 0%, rgba(51, 41, 255, 1) 22%,  rgba(0, 240, 166, 1) 100%);
+}
+
+#page-blocks-game-perfil_gamer .awards .score .icon,
+#page-blocks-game-perfil_gamer .awards .score .points {
+    display: inline-block;
+}
+
+#page-blocks-game-perfil_gamer .awards .score .icon {
+    background-color: #fff;
+    padding: 12px;
+    border-radius: 20px;
+}
+
+#page-blocks-game-perfil_gamer .awards .score .icon .evocoin {
+    margin-top: -8px;
+}
+
+#page-blocks-game-perfil_gamer .awards .score .points {
+    color: #fff;
+    font-size: 28px;
+    font-family: "Bungee", cursive;
+}
+
+#page-blocks-game-perfil_gamer #superpowerstable h2 {
+    text-align: center;
+    margin: 0;
+}
+
+#page-blocks-game-perfil_gamer #superpowerstable h3 {
+    color: #ff0540;
+}
+
+#page-blocks-game-perfil_gamer #superpowerstable .badge-image-column {
+    width: 200px;
+    text-align: center;
+}
+
+#page-blocks-game-perfil_gamer #superpowerstable thead th {
+    border-bottom: 1px solid #dee2e6;
+}
+
+#page-blocks-game-perfil_gamer #superpowerstable tr {
+    border: 1px solid #dee2e6;
 }
