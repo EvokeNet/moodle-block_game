@@ -1240,3 +1240,77 @@ function block_game_is_visibled_module($courseid, $cmid) {
     }
     return false;
 }
+
+function block_game_course_has_badges($courseid) {
+    if (block_game_get_course_badges($courseid)) {
+        return true;
+    }
+
+    return false;
+}
+
+function block_game_get_course_badges($courseid) {
+    global $CFG;
+
+    require_once($CFG->libdir . '/badgeslib.php');
+
+    return badges_get_badges(BADGE_TYPE_COURSE, $courseid);
+}
+
+function block_game_get_user_course_badges($userid, $courseid) {
+    $userbadges = badges_get_user_badges($userid, $courseid);
+
+    if ($userbadges) {
+        return $userbadges;
+    }
+
+    return false;
+}
+
+function block_game_get_course_badges_with_user_award($userid, $courseid) {
+    global $CFG, $PAGE;
+
+    $coursebadges = block_game_get_course_badges($courseid);
+
+    if (!$coursebadges) {
+        return false;
+    }
+
+    require_once($CFG->libdir . '/badgeslib.php');
+
+    $badges = [];
+    foreach ($coursebadges as $coursebadge) {
+        $badges[] = [
+            'id' => $coursebadge->id,
+            'name' => $coursebadge->name,
+            'badgeimage' => block_game_get_badge_image_url($PAGE->context->id, $coursebadge->id),
+            'awarded' => false
+        ];
+    }
+
+    $userbadges = block_game_get_user_course_badges($userid, $courseid);
+
+    if (!$userbadges) {
+        return $badges;
+    }
+
+    foreach ($badges as $key => $badge) {
+        foreach ($userbadges as $userbadge) {
+            if ($badge['id'] == $userbadge->id) {
+                $badges[$key]['awarded'] = true;
+                continue 2;
+            }
+        }
+    }
+
+    return $badges;
+}
+
+function block_game_get_badge_image_url($contextid, $badgeid) {
+    $imageurl = moodle_url::make_pluginfile_url($contextid, 'badges', 'badgeimage', $badgeid, '/', 'f1', false);
+
+    $imageurl->param('refresh', rand(1, 10000));
+
+    return $imageurl;
+}
+

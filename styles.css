@@ -24,6 +24,10 @@
     border-radius: 20px;
 }
 
+.block_game .awards .score .icon .evocoin {
+    margin-top: -8px;
+}
+
 .block_game .awards .score .points {
     color: #fff;
     font-size: 28px;
@@ -36,6 +40,20 @@
     border: 1px solid rgba(0, 240, 166, 1);
     padding: 12px;
     margin-left: 20px;
+}
+
+#page-blocks-game-rank_game .evokebadge,
+.block_game .awards .badges .evokebadge {
+    width: 32px;
+}
+
+/*.block_game .awards .badges .evokebadge:not(:first-child) {*/
+/*    margin-left: -10px;*/
+/*}*/
+
+#page-blocks-game-rank_game .evokebadge.dimmed,
+.block_game .awards .badges .evokebadge.dimmed {
+    filter: grayscale(100%) opacity(30%);
 }
 
 .block_game .userinfo {

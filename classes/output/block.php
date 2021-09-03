@@ -129,11 +129,19 @@ class block implements renderable, templatable {
             }
         }
 
+        $hasbadges = block_game_get_course_badges($this->courseid);
+        $badges = [];
+        if ($hasbadges) {
+            $badges = block_game_get_course_badges_with_user_award($this->user->id, $this->courseid);
+        }
+
         return [
             'userpicture' => $userpicture,
             'score' => $game->scorefull,
             'courseid' => $this->courseid,
-            'userfirstname' => $this->user->firstname
+            'userfirstname' => $this->user->firstname,
+            'hasbadges' => $hasbadges,
+            'badges' => $badges
         ];
     }
 }

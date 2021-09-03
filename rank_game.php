@@ -153,7 +153,21 @@ if ($ok) {
             $outputhtml .= '<tr>';
             $outputhtml .= '<td align="center" class="cell c0">' . $ordtxt . '</td>';
             $outputhtml .= '<td class="cell c2"> ' . $usertxt . ' </td>';
-            $outputhtml .= '<td class="cell c3"> Badges goes here </td>';
+
+
+            $userbadges = block_game_get_course_badges_with_user_award($gamer->userid, $courseid);
+            $userbadgescolumncontent = '';
+            if ($userbadges) {
+                foreach ($userbadges as $userbadge) {
+                    $badgeclasses = 'evokebadge';
+                    if (!$userbadge['awarded']) {
+                        $badgeclasses .= ' dimmed';
+                    }
+                    $userbadgescolumncontent .= '<img src="'.$userbadge['badgeimage'].'" alt="'.$userbadge['name'].'" class="'.$badgeclasses.'">';
+                }
+            }
+
+            $outputhtml .= '<td class="cell c3">'.$userbadgescolumncontent.'</td>';
             $colltd = 'c3 lastcol';
             if ($showreader) {
                 $outputhtml .= '<td align="center" class="cell c3 small">' . $gamer->sum_score_activities . '</td>';
