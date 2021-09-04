@@ -408,7 +408,7 @@ function block_game_score_badge($game, $value) {
     $badges = array();
     if (!empty($game->userid)) {
 
-        $sql = "SELECT cc.userid, cc.course, COALESCE(cc.timecompleted, 0) timecompleted
+        $sql = "SELECT cc.id, cc.userid, cc.course, COALESCE(cc.timecompleted, 0) timecompleted
                 FROM {course_completions} cc
                 WHERE cc.userid = ?
                 AND timecompleted<>0";

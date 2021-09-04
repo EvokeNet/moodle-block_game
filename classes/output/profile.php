@@ -25,6 +25,7 @@ namespace block_game\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+use block_game\util\user;
 use renderable;
 use templatable;
 use renderer_base;
@@ -101,8 +102,10 @@ class profile implements renderable, templatable {
             $badges = block_game_get_course_badges_with_user_award($this->user->id, $this->courseid);
         }
 
+        $usergameutil = new user($this->user, $output);
+
         return [
-            'userpicture' => $this->get_avatar($game, $this->user, $output),
+            'userpicture' => $usergameutil->get_user_avatar_or_image(),
             'score' => $game->scorefull,
             'courseid' => $this->courseid,
             'userfirstname' => $this->user->firstname,
@@ -110,23 +113,5 @@ class profile implements renderable, templatable {
             'badges' => $badges
         ];
 
-    }
-
-    protected function get_avatar($game, $user, $output) {
-        global $CFG;
-
-        $showavatar = !isset($game->config->use_avatar) || $game->config->use_avatar == 1;
-
-        if ($showavatar) {
-            $fs = get_file_storage();
-
-            if ($fs->file_exists(1, 'block_game', 'imagens_avatar', 0, '/', 'a' . $game->avatar . '.svg')) {
-                return block_game_pix_url(1, 'imagens_avatar', 'a' . $game->avatar);
-            }
-
-            return $CFG->wwwroot . '/blocks/game/pix/a' . $game->avatar . '.svg';
-        }
-
-        return $output->user_picture($user, ['size' => 80, 'hspace' => 12]);
     }
 }
