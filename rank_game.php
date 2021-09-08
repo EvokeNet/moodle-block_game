@@ -84,7 +84,7 @@ if ($ok) {
             }
             $txtlimit .= groups_print_course_menu($course, '/blocks/game/rank_game.php?id=' . $courseid);
         }
-        $outputhtml .= '<table class="table table-bordered">';
+        $outputhtml .= '<table class="table table-bordered leaderboard-table">';
         // View details.
         $context = context_course::instance($COURSE->id, MUST_EXIST);
         $header = '';
@@ -94,9 +94,9 @@ if ($ok) {
             $header .= '<tr>';
             $header .= '<th style="width: 9%;" scope="col"><strong>'
                     . get_string('order', 'block_game') . '</strong></th>';
-            $header .= '<th style="width: 42%;" scope="col"><strong>'
+            $header .= '<th style="width: 62%;" scope="col"><strong>'
                     . get_string('name', 'block_game') . '</strong></th>';
-            $header .= '<th style="width: 40%;" scope="col"><strong>'
+            $header .= '<th style="width: 20%;" scope="col"><strong>'
                 . get_string('collectedsuperpowers', 'block_game') . '</strong></th>';
             $header .= '<th style="width: 15%;" scope="col"><strong>'
                     . get_string('score_atv', 'block_game') . '</strong></th>';
@@ -116,9 +116,9 @@ if ($ok) {
             $header .= '<tr>';
             $header .= '<th style="width: 10%;" scope="col"><strong>'
                     . get_string('order', 'block_game') . '</strong></th>';
-            $header .= '<th style="width: 40%;" scope="col"><strong>'
+            $header .= '<th style="width: 50%;" scope="col"><strong>'
                     . get_string('name', 'block_game') . '</strong></th>';
-            $header .= '<th style="width: 40%;" scope="col"><strong>'
+            $header .= '<th style="width: 30%;" scope="col"><strong>'
                 . get_string('collectedsuperpowers', 'block_game') . '</strong></th>';
             $header .= '<th style="width: 10%;" scope="col"><strong>'
                     . get_string('evocoins', 'block_game') . '</strong></th>';

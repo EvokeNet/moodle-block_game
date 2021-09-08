@@ -132,7 +132,7 @@ $string['score_detail'] = 'Score detail';
 $string['score_mod'] = 'Modules';
 $string['score_atv'] = 'Activities';
 $string['score_section'] = 'Sections';
-$string['score_bonus_day'] = 'Bonus of day';
+$string['score_bonus_day'] = 'Bonus';
 $string['score_total'] = 'Total';
 
 $string['help_game_title'] = 'Help of game';
