@@ -61,6 +61,9 @@ $PAGE->set_context(context_course::instance($courseid));
 $PAGE->set_title(get_string('set_avatar_title', 'block_game'));
 $PAGE->set_heading(get_string('set_avatar_title', 'block_game'));
 echo $OUTPUT->header();
+
+echo html_writer::tag('h3', get_string('selectyouragentavatar', 'block_game'));
+
 $outputhtml = "";
 if ($changeavatar || $courseid == SITEID) {
     $outputhtml .= '<table style="max-width: 750px;" border="0">';

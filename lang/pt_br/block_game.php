@@ -215,3 +215,4 @@ $string['downloadthis'] = 'Salvar como';
 
 $string['evocoins'] = 'Evocoins';
 $string['collectedsuperpowers'] = 'Super poderes coletados';
+$string['selectyouragentavatar'] = 'Selecione o seu avatar:';
