@@ -216,4 +216,4 @@ $string['downloadthis'] = 'Download as';
 $string['evocoins'] = 'Evocoins';
 $string['collectedsuperpowers'] = 'Collected superpowers';
 $string['selectyouragentavatar'] = 'Select your agent avatar:';
-$string['viewscoreboard'] = 'View score board';
+$string['viewscoreboard'] = 'View scoreboard';
