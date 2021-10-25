@@ -36,20 +36,26 @@ class user {
         $this->output = $output;
     }
 
-    public function get_user_avatar_or_image() {
+    public function get_user_avatar_or_image($PAGE) {
         global $DB, $CFG, $PAGE;
 
         $gameconfig = get_config('block_game');
 
         if (!isset($gameconfig->use_avatar) || !$gameconfig->use_avatar) {
-            return $this->output->user_picture($this->user, ['size' => 1, 'hspace' => 12]);
+            $userpicture = new \user_picture($this->user);
+            $userpicture->size = 1;
+
+            return $userpicture->get_url($PAGE);
         }
 
         $sql = 'SELECT * FROM {block_game} WHERE userid = :userid LIMIT 1';
         $usergameentry = $DB->get_record_sql($sql, ['userid' => $this->user->id]);
 
         if (!$usergameentry) {
-            return $this->output->user_picture($this->user, ['size' => 80, 'hspace' => 12]);
+            $userpicture = new \user_picture($this->user);
+            $userpicture->size = 1;
+
+            return $userpicture->get_url($PAGE);
         }
 
         $fs = get_file_storage();
