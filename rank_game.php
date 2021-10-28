@@ -60,7 +60,11 @@ if (has_capability('moodle/course:update', $context, $USER->id)) {
     echo $OUTPUT->download_dataformat_selector(get_string('downloadthis', 'block_game'), 'download.php',
             'dataformat', ['id' => $courseid, 'op' => 'ranking']);
 }
+
+$outputhtml = '';
+
 $game = new stdClass();
+
 if ($ok) {
     if ($courseid == SITEID) {
         $game->config = $cfggame;

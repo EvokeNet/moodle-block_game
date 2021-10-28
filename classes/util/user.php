@@ -36,7 +36,7 @@ class user {
         $this->output = $output;
     }
 
-    public function get_user_avatar_or_image($PAGE) {
+    public function get_user_avatar_or_image() {
         global $DB, $CFG, $PAGE;
 
         $gameconfig = get_config('block_game');
